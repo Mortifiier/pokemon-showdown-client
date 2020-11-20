@@ -247,17 +247,22 @@
 					folders.push('B~');
 					continue;
 				}
-				switch (format.slice(0, 4)) {
-				case 'gen1': format = 'I' + format.slice(4); break;
-				case 'gen2': format = 'H' + format.slice(4); break;
-				case 'gen3': format = 'G' + format.slice(4); break;
-				case 'gen4': format = 'F' + format.slice(4); break;
-				case 'gen5': format = 'E' + format.slice(4); break;
-				case 'gen6': format = 'D' + format.slice(4); break;
-				case 'gen7': format = 'C' + format.slice(4); break;
-				case 'gen8': format = 'B' + format.slice(4); break;
-				case 'gen9': format = 'A' + format.slice(4); break;
-				default: format = 'X' + format; break;
+				if (format.slice(0, 2) === 'oh') {
+					format = 'O' + format.slice(2);
+				}
+				else {
+					switch (format.slice(0, 4)) {
+					case 'gen1': format = 'I' + format.slice(4); break;
+					case 'gen2': format = 'H' + format.slice(4); break;
+					case 'gen3': format = 'G' + format.slice(4); break;
+					case 'gen4': format = 'F' + format.slice(4); break;
+					case 'gen5': format = 'E' + format.slice(4); break;
+					case 'gen6': format = 'D' + format.slice(4); break;
+					case 'gen7': format = 'C' + format.slice(4); break;
+					case 'gen8': format = 'B' + format.slice(4); break;
+					case 'gen9': format = 'A' + format.slice(4); break;
+					default: format = 'X' + format; break;
+					}	
 				}
 				folders.push(format);
 			}
@@ -269,6 +274,7 @@
 				var format = folders[i];
 				var newGen;
 				switch (format.charAt(0)) {
+				case 'O': newGen = 'O'; break;
 				case 'I': newGen = '1'; break;
 				case 'H': newGen = '2'; break;
 				case 'G': newGen = '3'; break;
@@ -288,6 +294,8 @@
 						formatFolderBuf = '';
 						buf += '<div class="foldersep"></div>';
 						buf += '<div class="folder"><h3>Folders</h3></div>';
+					} else if (gen === 'O') {
+						buf += '<div class="folder"><h3>OH</h3></div>';
 					} else if (gen === 'X') {
 						buf += '<div class="folder"><h3>???</h3></div>';
 					} else {
