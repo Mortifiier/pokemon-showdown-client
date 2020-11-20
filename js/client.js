@@ -1199,12 +1199,12 @@ function toId() {
 					}
 					var id = toID(name);
 					// var isTeambuilderFormat = !team && name.slice(-11) !== 'Custom Game';
-					var isTeambuilderFormat = !team && name.includes('[RB]');
+					var isTeambuilderFormat = !team && id.slice(0, 2) === 'oh';
 					var teambuilderFormat = '';
 					var teambuilderFormatName = '';
 					if (isTeambuilderFormat) {
 						teambuilderFormatName = name;
-						if (id.slice(0, 3) !== 'gen') {
+						if (id.slice(0, 3) !== 'gen' && id.slice(0, 2) !== 'oh') {
 							teambuilderFormatName = '[Gen 6] ' + name;
 						}
 						var parenPos = teambuilderFormatName.indexOf('(');
