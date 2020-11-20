@@ -139,12 +139,13 @@ class MainMenuRoom extends PSRoom {
 					}
 				}
 				let id = toID(name);
-				let isTeambuilderFormat = !team && name.slice(-11) !== 'Custom Game';
+				// let isTeambuilderFormat = !team && name.slice(-11) !== 'Custom Game';
+				let isTeambuilderFormat = !team && id.slice(0, 2) === 'oh';
 				let teambuilderFormat = '' as ID;
 				let teambuilderFormatName = '';
 				if (isTeambuilderFormat) {
 					teambuilderFormatName = name;
-					if (id.slice(0, 3) !== 'gen') {
+					if (id.slice(0, 3) !== 'gen' && id.slice(0, 2) !== 'oh') {
 						teambuilderFormatName = '[Gen 6] ' + name;
 					}
 					let parenPos = teambuilderFormatName.indexOf('(');
