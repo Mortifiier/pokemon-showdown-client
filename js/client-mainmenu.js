@@ -1144,7 +1144,7 @@
 				// formatName = formatName.replace('[Gen 8 ', '[');
 				// formatName = formatName.replace('[Gen 8] ', '');
 				// formatName = formatName.replace('[Gen 7 ', '[');
-				if (formatName.includes('[RB]') formatName = formatName.replace('[Gen 6] ', '');
+				if (formatName.includes('[RB]')) formatName = formatName.replace('[Gen 6] ', '');
 				bufs[curBuf] += '<li><button name="selectFormat" value="' + i + '"' + (curFormat === i ? ' class="sel"' : '') + '>' + formatName + '</button></li>';
 			}
 
