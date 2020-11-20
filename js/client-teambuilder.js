@@ -295,7 +295,7 @@
 						buf += '<div class="foldersep"></div>';
 						buf += '<div class="folder"><h3>Folders</h3></div>';
 					} else if (gen === 'O') {
-						buf += '<div class="folder"><h3>OH</h3></div>';
+						buf += '<div class="folder"><h3>Overhaul</h3></div>';
 					} else if (gen === 'X') {
 						buf += '<div class="folder"><h3>???</h3></div>';
 					} else {
@@ -317,8 +317,13 @@
 				}
 				formatName = format.slice(1);
 				if (formatName === '~') formatName = '';
-				format = 'gen' + newGen + formatName;
-				if (format.length === 4) formatName = '(uncategorized)';
+				if (gen === 'O') {
+					format = formatName;
+					if (format.length === 2) formatName = '(uncategorized)';
+				} else {
+					format = 'gen' + newGen + formatName;
+					if (format.length === 4) formatName = '(uncategorized)';
+				}
 				// folders are <div>s rather than <button>s because in theory it has
 				// less weird interactions with HTML5 drag-and-drop
 				buf += '<div class="folder' + (this.curFolder === format ? ' cur"><div class="folderhack3"><div class="folderhack1"></div><div class="folderhack2"></div>' : '">') + '<div class="selectFolder" data-value="' + format + '"><i class="fa ' + (this.curFolder === format ? 'fa-folder-open-o' : 'fa-folder-o') + '"></i>' + formatName + '</div></div>' + (this.curFolder === format ? '</div>' : '');
