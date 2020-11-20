@@ -1198,7 +1198,8 @@ function toId() {
 						}
 					}
 					var id = toID(name);
-					var isTeambuilderFormat = !team && name.slice(-11) !== 'Custom Game';
+					//var isTeambuilderFormat = !team && name.slice(-11) !== 'Custom Game';
+					var isTeambuilderFormat = !team && name.slice(0, 4) === '[RB]';
 					var teambuilderFormat = '';
 					var teambuilderFormatName = '';
 					if (isTeambuilderFormat) {
