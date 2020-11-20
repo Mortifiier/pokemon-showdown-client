@@ -898,8 +898,8 @@
 			if (!noChoice) {
 				this.curFormat = formatid;
 				if (!this.curFormat) {
-					if (BattleFormats['rbou']) {
-						this.curFormat = 'rbou';
+					if (BattleFormats['ohkantojohtoou']) {
+						this.curFormat = 'ohkantojohtoou';
 					} else for (var i in BattleFormats) {
 						if (!BattleFormats[i].searchShow || !BattleFormats[i].challengeShow) continue;
 						this.curFormat = i;
@@ -1144,7 +1144,6 @@
 				// formatName = formatName.replace('[Gen 8 ', '[');
 				// formatName = formatName.replace('[Gen 8] ', '');
 				// formatName = formatName.replace('[Gen 7 ', '[');
-				if (formatName.includes('[RB]')) formatName = formatName.replace('[Gen 6] ', '');
 				bufs[curBuf] += '<li><button name="selectFormat" value="' + i + '"' + (curFormat === i ? ' class="sel"' : '') + '>' + formatName + '</button></li>';
 			}
 
