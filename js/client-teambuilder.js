@@ -318,7 +318,7 @@
 				formatName = format.slice(1);
 				if (formatName === '~') formatName = '';
 				if (gen === 'O') {
-					format = formatName;
+					format = 'oh' + formatName;
 					if (format.length === 2) formatName = '(uncategorized)';
 				} else {
 					format = 'gen' + newGen + formatName;
