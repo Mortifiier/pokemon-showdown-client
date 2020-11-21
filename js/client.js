@@ -1198,8 +1198,8 @@ function toId() {
 						}
 					}
 					var id = toID(name);
-					// var isTeambuilderFormat = !team && name.slice(-11) !== 'Custom Game';
-					var isTeambuilderFormat = !team && id.slice(0, 2) === 'oh';
+					var isTeambuilderFormat = !team && name.slice(-11) !== 'Custom Game';
+					// var isTeambuilderFormat = !team && id.slice(0, 2) === 'oh';
 					var teambuilderFormat = '';
 					var teambuilderFormatName = '';
 					if (isTeambuilderFormat) {
