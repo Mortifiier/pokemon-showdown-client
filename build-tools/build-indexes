@@ -287,7 +287,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 	const GENS = [8, 7, 6, 5, 4, 3, 2, 1];
 	const DOUBLES = GENS.filter(x => x > 2).map(num => -num);
 	const NFE = GENS.map(num => num + 0.3);
-	const OTHER = [8.4, 8.2, 8.1, -8.4, 7.1, -7.5, 9.6];
+	const OTHER = [8.4, 8.2, 8.1, -8.4, 7.1, -7.5, 6.6];
 
 	process.stdout.write("\n  ");
 	for (const genIdent of [...GENS, ...DOUBLES, ...NFE, ...OTHER]) {
@@ -298,7 +298,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 		const isNatDex = (genIdent === 8.1);
 		const isDoubles = (genIdent < 0);
 		const isVGC = (genIdent === -7.5);
-		const isOverhaul = (genIdent === 9.6);
+		const isOverhaul = (genIdent === 6.6);
 		const genNum = Math.floor(isDoubles ? -genIdent : genIdent);
 		const gen = isOverhaul ? 'overhaul' : (isLetsGo ? 'letsgo' : 'gen' + genNum + (isDLC1 ? 'dlc1' : ''));
 		process.stdout.write("" + gen + (isDoubles ? " doubles" : "") + "... ");
