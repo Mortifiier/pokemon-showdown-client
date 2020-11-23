@@ -310,7 +310,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 		const nonstandardMoves = [];
 		process.stdout.write(" > ");
 		for (const id of pokemon) {
-			process.stdout.write(gen + " ");
+			// process.stdout.write(gen + " ");
 			const species = Dex.mod(gen).getSpecies(id);
 			if (species.gen > genNum) continue;
 			const tier = (() => {
