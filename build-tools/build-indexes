@@ -300,7 +300,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 		const isVGC = (genIdent === -7.5);
 		const isOverhaul = (genIdent === 6.6);
 		const genNum = Math.floor(isDoubles ? -genIdent : genIdent);
-		const gen = isOverhaul ? 'letsgo' : (isLetsGo ? 'letsgo' : 'gen' + genNum + (isDLC1 ? 'dlc1' : ''));
+		const gen = isOverhaul ? 'overhaul' : (isLetsGo ? 'letsgo' : 'gen' + genNum + (isDLC1 ? 'dlc1' : ''));
 		process.stdout.write("> " + gen + (isDoubles ? " doubles" : ""));
 		const pokemon = Object.keys(Dex.data.Pokedex);
 		pokemon.sort();
@@ -311,7 +311,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 		process.stdout.write(" > ");
 		for (const id of pokemon) {
 			// process.stdout.write(gen + " ");
-			const species = Dex.mod(gen).getSpecies(id);
+			const species = Dex.mod(isOverhaul ? 'gen1' : gen).getSpecies(id);
 			if (species.gen > genNum) continue;
 			const tier = (() => {
 				if (isNatDex) {
