@@ -289,7 +289,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 	const NFE = GENS.map(num => num + 0.3);
 	const OTHER = [8.4, 8.2, 8.1, -8.4, 7.1, -7.5];
 
-	// process.stdout.write("\n  ");
+	process.stdout.write("\n");
 	for (const genIdent of [...GENS, ...DOUBLES, ...NFE, ...OTHER]) {
 		const isLetsGo = (genIdent === 7.1);
 		const isMetBattle = (genIdent === 8.2);
@@ -300,7 +300,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 		const isVGC = (genIdent === -7.5);
 		const genNum = Math.floor(isDoubles ? -genIdent : genIdent);
 		const gen = isLetsGo ? 'letsgo' : 'gen' + genNum + (isDLC1 ? 'dlc1' : '');
-		// process.stdout.write("" + gen + (isDoubles ? " doubles" : "") + "... ");
+		process.stdout.write("> " + gen + (isDoubles ? " doubles" : "") + "\n");
 		const pokemon = Object.keys(Dex.data.Pokedex);
 		pokemon.sort();
 		const tierTable = {};
