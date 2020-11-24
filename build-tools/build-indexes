@@ -287,11 +287,12 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 	const GENS = [8, 7, 6, 5, 4, 3, 2, 1];
 	const DOUBLES = GENS.filter(x => x > 2).map(num => -num);
 	const NFE = GENS.map(num => num + 0.3);
-	const OTHER = [8.4, 8.2, 8.1, -8.4, 7.1, -7.5];
+	const OTHER = [8.4, 8.2, 8.1, -8.4, 7.1, -7.5, 6.6];
 
 	// process.stdout.write("\n  ");
 	for (const genIdent of [...GENS, ...DOUBLES, ...NFE, ...OTHER]) {
 		const isLetsGo = (genIdent === 7.1);
+		const isOverhaul = (genIdent === 6.6);
 		const isMetBattle = (genIdent === 8.2);
 		const isNFE = (('' + genIdent).endsWith('.3'));
 		const isDLC1 = (genIdent === 8.4 || genIdent === -8.4);
@@ -386,6 +387,12 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 					if (species.forme && !['Alola', 'Mega', 'Mega-X', 'Mega-Y', 'Starter'].includes(species.forme)) return 'Illegal';
 					return species.tier;
 				}
+				if (isOverhaul) {
+					let baseSpecies = Dex.mod(gen).getSpecies(species.baseSpecies);
+					let validNum = (baseSpecies.num <= 12 && species.num >= 1);
+					if (!validNum) return 'Illegal';
+					return species.tier;
+				}
 				if (isVGC) {
 					if (species.tier === 'NFE') return 'NFE';
 					if (species.tier === 'LC') return 'NFE';
@@ -473,6 +480,11 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			BattleTeambuilderTable['letsgo'].tiers = tiers;
 			BattleTeambuilderTable['letsgo'].overrideTier = overrideTier;
 			BattleTeambuilderTable['letsgo'].formatSlices = formatSlices;
+		} else if (isOverhaul) {
+			BattleTeambuilderTable['overhaul'] = {};
+			BattleTeambuilderTable['overhaul'].tiers = tiers;
+			BattleTeambuilderTable['overhaul'].overrideTier = overrideTier;
+			BattleTeambuilderTable['overhaul'].formatSlices = formatSlices;
 		} else if (isVGC) {
 			BattleTeambuilderTable[gen + 'vgc'] = {};
 			BattleTeambuilderTable[gen + 'vgc'].tiers = tiers;
