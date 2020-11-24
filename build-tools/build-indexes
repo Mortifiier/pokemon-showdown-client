@@ -382,7 +382,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 				}
 				if (isLetsGo) {
 					let baseSpecies = Dex.mod(gen).getSpecies(species.baseSpecies);
-					let validNum = (baseSpecies.num <= 1 && species.num >= 1) || [808, 809].includes(baseSpecies.num);
+					let validNum = (baseSpecies.num <= 12 && species.num >= 1) || [808, 809].includes(baseSpecies.num);
 					if (!validNum) return 'Illegal';
 					if (species.forme && !['Alola', 'Mega', 'Mega-X', 'Mega-Y', 'Starter'].includes(species.forme)) return 'Illegal';
 					return species.tier;
@@ -520,6 +520,9 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 				return ["CAP", "CAP NFE", "CAP LC", "AG", "Uber", "(Uber)", "OU", "UUBL", "(OU)", "UU", "(UU)", "NFE", "LC Uber", "LC"];
 			}
 			if (isLetsGo) {
+				return ["Uber", "OU", "UU", "NFE", "LC"];
+			}
+			if (isOverhaul) {
 				return ["Uber", "OU", "UU", "NFE", "LC"];
 			}
 			if (isVGC) {
